@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position Properties</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        min-height: 1200px;
+      }
+
+      .static-box {
+        position: static;
+        background-color: lightgray;
+        padding: 15px;
+      }
+
+      .relative-box {
+        position: relative;
+        top: 10px;
+        left: 20px;
+        background-color: lightblue;
+        padding: 15px;
+      }
+      .parent {
+        position: relative;
+        height: 150px;
+        background-color: lightyellow;
+        margin-top: 30px;
+      }
+
+      .absolute-box {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: orange;
+        padding: 10px;
+      }
+
+      .fixed.box {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        z-index: 10;
+        background-color: navy;
+        color: white;
+        padding: 15px;
+      }
+
+      .sticky-box {
+        position: sticky;
+        top: 0;
+        background-color: lightgreen;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Static Position</h2>
+    <div class="static-box">Static Element</div>
+
+    <h2>Relative Position</h2>
+    <div class="relative-box">Relative Element</div>
+
+    <h2>Absolute Position</h2>
+    <div class="parent">
+      Parent Element
+      <div class="absolute-box">Absolute Element</div>
+    </div>
+
+    <h2>Sticky Position</h2>
+    <div class="sticky-box">Scroll the page to see sticky positioning.</div>
+    <p>Scroll down to observe the positioning behavior.</p>
+    <div class="fixed-box">Fixed Element</div>
+  </body>
+</html>

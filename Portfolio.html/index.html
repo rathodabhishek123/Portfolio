@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abhishek Rathod | Java Developer</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      :root {
+        --bg: #0b1120;
+        --card: #121c30;
+        --primary: #38bdf8;
+        --text: #f1f5f9;
+        --muted: #a3b4ca;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+
+        background-image: url("bg.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1100px;
+        margin: auto;
+      }
+
+      /* Navbar background */
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+        background: rgba(8, 15, 30, 0.96);
+        backdrop-filter: blur(15px);
+        border-bottom: 2px solid #38bdf8;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Full-width navbar layout */
+      .navbar .container {
+        width: 100%;
+        max-width: 1800px;
+        min-height: 88px;
+        margin: 0 auto;
+        padding: 0 3%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      /* Name on the left */
+      .navbar .logo {
+        font-size: 27px;
+        font-weight: 700;
+        color: #f1f5f9;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      /* Navigation occupies the remaining space */
+      .navbar .nav-links {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: nowrap;
+        gap: 12px;
+
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Navigation text */
+      .navbar .nav-links a {
+        display: inline-block;
+        position: relative;
+        padding: 10px 0;
+        color: #e2e8f0;
+        font-size: 17px;
+        font-weight: 600;
+        white-space: nowrap;
+        transition: color 0.3s ease;
+      }
+
+      /* Cyan underline animation */
+      .navbar .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #38bdf8;
+        transition: width 0.3s ease;
+      }
+
+      .navbar .nav-links a:hover {
+        color: #38bdf8;
+      }
+
+      .navbar .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Responsive layout */
+      @media (max-width: 1000px) {
+        .navbar .container {
+          flex-wrap: wrap;
+          justify-content: center;
+          padding: 15px 2%;
+          gap: 12px;
+        }
+
+        .navbar .nav-links {
+          flex: 1 1 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 8px 24px;
+        }
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        background: #000000b6;
+        padding: 60px 0;
+      }
+
+      /* Two-column layout */
+      .hero-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+        width: 100%;
+      }
+
+      /* Keep your name on one line */
+      .hero-content h1 {
+        font-size: clamp(38px, 3.5vw, 58px);
+        line-height: 1.2;
+        white-space: nowrap;
+        margin-bottom: 24px;
+      }
+
+      /* Give more space to the left content */
+      .hero-content {
+        flex: 1;
+        max-width: 750px;
+        min-width: 0;
+      }
+
+      /* Keep the profile image on the right */
+      .hero-image {
+        flex: 0 0 320px;
+      }
+      .hero-image img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 50%;
+        border: 4px solid #29baf0;
+        box-shadow: 0 0 25px rgba(41, 186, 240, 0.35);
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+
+      .hero-image img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(41, 186, 240, 0.65);
+      }
+
+      /* Mobile responsive */
+      @media (max-width: 768px) {
+        .hero-container {
+          flex-direction: column-reverse;
+          text-align: center;
+          gap: 35px;
+        }
+
+        .hero-image {
+          flex: 0 0 auto;
+        }
+
+        .hero-image img {
+          width: 220px;
+          height: 220px;
+        }
+
+        .hero-content {
+          max-width: 100%;
+        }
+      }
+
+      .tag {
+        display: inline-block;
+        color: var(--primary);
+        border: 1px solid #24506a;
+        background: rgba(56, 189, 248, 0.08);
+        padding: 7px 15px;
+        border-radius: 30px;
+        margin-bottom: 22px;
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 6vw, 65px);
+        line-height: 1.15;
+        margin-bottom: 20px;
+      }
+
+      .hero h2 {
+        font-size: clamp(20px, 3vw, 28px);
+        color: var(--muted);
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        color: var(--muted);
+        max-width: 680px;
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 12px 23px;
+        border-radius: 8px;
+        font-weight: bold;
+        margin: 5px 8px 5px 0;
+        transition: 0.3s;
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        color: #07111f;
+      }
+
+      .btn-outline {
+        border: 1px solid var(--primary);
+        color: var(--primary);
+      }
+
+      .btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(56, 189, 248, 0.18);
+      }
+
+      /* Common sections */
+      section {
+        padding: 85px 0;
+        scroll-margin-top: 70px;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 34px;
+        margin-bottom: 12px;
+      }
+
+      .section-title span {
+        color: var(--primary);
+      }
+
+      .section-desc {
+        text-align: center;
+        color: var(--muted);
+        margin-bottom: 42px;
+      }
+
+      .about-box,
+      .card,
+      .skill-card,
+      .education-card {
+        background: var(--card);
+        border: 1px solid #26354c;
+        border-radius: 14px;
+        padding: 25px;
+        transition: 0.3s;
+      }
+
+      .about-box {
+        max-width: 850px;
+        margin: auto;
+        color: var(--muted);
+      }
+
+      .about-box strong {
+        color: var(--text);
+      }
+
+      .card:hover,
+      .skill-card:hover,
+      .education-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--primary);
+      }
+
+      /* Skills */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .skill-card h3 {
+        color: var(--primary);
+        margin-bottom: 12px;
+      }
+
+      .skill-card p {
+        color: var(--muted);
+      }
+
+      /* Projects */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .project-number {
+        color: var(--primary);
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .card h3 {
+        margin: 10px 0;
+        font-size: 22px;
+      }
+
+      .card p {
+        color: var(--muted);
+        margin-bottom: 15px;
+      }
+
+      .tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tech span {
+        background: #203047;
+        color: #bae6fd;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+      }
+
+      /* Education and experience */
+      .timeline {
+        max-width: 800px;
+        margin: auto;
+        display: grid;
+        gap: 20px;
+      }
+
+      .education-card h3 {
+        color: var(--primary);
+        margin-bottom: 8px;
+      }
+
+      .education-card p {
+        color: var(--muted);
+      }
+
+      .date {
+        display: inline-block;
+        margin-top: 8px;
+        color: var(--primary);
+        font-size: 14px;
+      }
+
+      /* Certifications */
+      .cert-list {
+        max-width: 800px;
+        margin: auto;
+        display: grid;
+        gap: 14px;
+      }
+
+      .cert-item {
+        padding: 17px 20px;
+        background: var(--card);
+        border: 1px solid #26354c;
+        border-radius: 10px;
+      }
+
+      .cert-item span {
+        color: var(--primary);
+        margin-right: 10px;
+      }
+
+      /* Contact */
+      .contact-box {
+        max-width: 700px;
+        margin: auto;
+        text-align: center;
+        background: var(--card);
+        padding: 35px 25px;
+        border: 1px solid #26354c;
+        border-radius: 16px;
+      }
+
+      .contact-box p {
+        color: var(--muted);
+        margin: 15px 0;
+        overflow-wrap: anywhere;
+      }
+
+      footer {
+        padding: 25px 0;
+        text-align: center;
+        border-top: 1px solid #26354c;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      /* Mobile responsive design */
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          padding: 16px 0;
+        }
+
+        .nav-links {
+          justify-content: center;
+          gap: 12px 18px;
+          font-size: 14px;
+        }
+
+        .hero {
+          min-height: auto;
+          padding: 85px 0;
+        }
+
+        .skills-grid,
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        section {
+          padding: 65px 0;
+        }
+
+        .section-title {
+          font-size: 29px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <header>
+      <nav class="navbar">
+        <div class="container">
+          <a href="#home" class="logo">Abhishek Keshav Rathod</a>
+
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Home -->
+    <section class="hero" id="home">
+      <div class="container hero-container">
+        <!-- Left Side: Content -->
+        <div class="hero-content">
+          <span class="tag">Available for Entry-Level Opportunities</span>
+
+          <h1>
+            Hi, I'm
+            <span class="highlight" style="color: #38bdf8"
+              >Abhishek Rathod</span
+            >
+          </h1>
+
+          <h2>Computer Science Graduate | Java Developer</h2>
+
+          <p>
+            I am a Computer Science Engineering graduate interested in Java
+            development and backend technologies. I enjoy building web
+            applications and working with Java, Spring Boot, Hibernate, REST
+            APIs, and MySQL. I am eager to learn new technologies and contribute
+            to real-world software projects.
+          </p>
+
+          <a href="#projects" class="btn btn-primary"> Explore My Projects </a>
+
+          <a href="#contact" class="btn btn-outline"> Contact Me </a>
+        </div>
+
+        <!-- Right Side: Profile Picture -->
+        <div class="hero-image">
+          <img src="Profile.jpg" alt="Abhishek Rathod Profile Picture" />
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" style="background-color: #00000093">
+      <div class="container">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <p class="section-desc">A little about my background</p>
+
+        <div class="about-box">
+          <p>
+            I am a Computer Science and Engineering graduate from Babasaheb Naik
+            College of Engineering, Pusad, affiliated with Sant Gadge Baba
+            Amravati University.
+          </p>
+          <br />
+          <p>
+            My technical interests include Core Java, object-oriented
+            programming, Spring Boot, Hibernate, database management, and web
+            development. During my IT internship at Net Gyani IT Services Pvt.
+            Ltd., I worked with Salesforce Sales Cloud for lead management,
+            opportunity tracking, and sales forecasting.
+          </p>
+          <br />
+          <p>
+            <strong>Career goal:</strong> To start my career as a Java Developer
+            or Software Engineer and continue improving my programming and
+            problem-solving skills.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" style="background-color: #00000093">
+      <div class="container">
+        <h2 class="section-title">Technical <span>Skills</span></h2>
+        <p class="section-desc">Technologies I have studied and used</p>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Programming</h3>
+            <p>Java, Core Java, OOP concepts</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Java Technologies</h3>
+            <p>JDBC, Hibernate, Spring IoC, Spring MVC, Spring Boot</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Web Development</h3>
+            <p>HTML, CSS, JavaScript, jQuery, AJAX</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Database & APIs</h3>
+            <p>MySQL, REST APIs, Postman</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Tools & Platforms</h3>
+            <p>Git, GitHub, Eclipse IDE, VS Code, Spring Tool Suite</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Computer Fundamentals</h3>
+            <p>Data Structures, Memory Management, Windows, Basic Linux</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" style="background-color: #00000093">
+      <div class="container">
+        <h2 class="section-title">My <span>Projects</span></h2>
+        <p class="section-desc">Some projects from my resume</p>
+
+        <div class="projects-grid">
+          <div class="card">
+            <span class="project-number">PROJECT 01</span>
+            <h3>Employee Management System</h3>
+            <p>
+              Developed a RESTful application for creating, retrieving,
+              updating, and deleting employee records. Integrated MySQL for
+              persistent data storage using Spring Data JPA and Hibernate.
+            </p>
+            <div class="tech">
+              <span>Java</span>
+              <span>Spring Boot</span>
+              <span>Hibernate</span>
+              <span>MySQL</span>
+              <span>REST API</span>
+              <span>Maven</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="project-number">PROJECT 02</span>
+            <h3>Login Authentication System</h3>
+            <p>
+              Built a full-stack web application with user registration, login,
+              password hashing, and PHP session management to control access to
+              restricted pages.
+            </p>
+            <div class="tech">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>PHP</span>
+              <span>MySQL</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <span class="project-number">PROJECT 03</span>
+            <h3>Salesforce Sales Cloud Automation</h3>
+            <p>
+              Worked on sales process automation involving lead capture, lead
+              conversion, opportunity tracking, workflow rules, validation
+              rules, approval processes, forecasting, and analytics dashboards.
+            </p>
+            <div class="tech">
+              <span>Salesforce</span>
+              <span>Sales Cloud</span>
+              <span>Workflows</span>
+              <span>Analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" style="background-color: #00000093">
+      <div class="container">
+        <h2 class="section-title">Work <span>Experience</span></h2>
+        <p class="section-desc">My internship experience</p>
+
+        <div class="timeline">
+          <div class="education-card">
+            <h3>IT Intern</h3>
+            <p><strong>Net Gyani IT Services Pvt. Ltd.</strong></p>
+            <p>
+              Worked with Salesforce Sales Cloud to support lead management,
+              opportunity tracking, and sales forecasting.
+            </p>
+            <span class="date">October 2025 - April 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" style="background-color: #00000093">
+      <div class="container">
+        <h2 class="section-title">My <span>Education</span></h2>
+        <p class="section-desc">My academic background</p>
+
+        <div class="timeline">
+          <div class="education-card">
+            <h3>Bachelor of Engineering</h3>
+            <p>Computer Science and Engineering</p>
+            <p>Babasaheb Naik College of Engineering, Pusad</p>
+            <p>Sant Gadge Baba Amravati University</p>
+            <p><strong>CGPA: 7.70 / 10</strong></p>
+            <span class="date">Graduation Year: 2026</span>
+          </div>
+
+          <div class="education-card">
+            <h3>Higher Secondary Certificate (12th)</h3>
+            <p>P.N. College, Pusad, Maharashtra</p>
+            <p><strong>Percentage: 73.33%</strong></p>
+            <span class="date">March 2022</span>
+          </div>
+
+          <div class="education-card">
+            <h3>Secondary School Certificate (10th)</h3>
+            <p>Vasantrao Naik High School, Pusad, Maharashtra</p>
+            <p><strong>Percentage: 78.20%</strong></p>
+            <span class="date">March 2020</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" style="background-color: #00000093">
+      <div class="container">
+        <h2 class="section-title">Certifi<span>cations</span></h2>
+        <p class="section-desc">Courses and academic activities</p>
+
+        <div class="cert-list">
+          <div class="cert-item">
+            <span>✓</span> Cloud Computing - NPTEL, 2024
+          </div>
+          <div class="cert-item">
+            <span>✓</span> Salesforce Administrator - NetGyani Academy, 2025
+          </div>
+          <div class="cert-item">
+            <span>✓</span> Hackathon for Web Development
+          </div>
+          <div class="cert-item">
+            <span>✓</span> Research Paper Presentation
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="background-color: #00000093">
+      <div class="container">
+        <h2 class="section-title">Contact <span>Me</span></h2>
+        <p class="section-desc">Have an opportunity? Let's connect.</p>
+
+        <div class="contact-box">
+          <h3>Abhishek Keshav Rathod</h3>
+
+          <p>Pune, Maharashtra</p>
+
+          <p>
+            Email:
+            <a class="highlight" href="mailto:rathodabhi1244@gmail.com">
+              rathodabhi1244@gmail.com
+            </a>
+          </p>
+
+          <p>
+            Phone:
+            <a class="highlight" href="tel:+917083531756"> +91 7083531756 </a>
+          </p>
+
+          <a
+            href="https://github.com/"
+            class="btn btn-outline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://www.linkedin.com/"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="background-color: #00000093">
+        <p>© 2026 Abhishek Rathod | Personal Portfolio</p>
+      </div>
+    </footer>
+  </body>
+</html>

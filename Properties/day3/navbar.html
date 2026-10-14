@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .navbar {
+        border: 1px solid black;
+        height: 80px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+      }
+      .nav-brand {
+        width: 20%;
+        /* border: 1px solid red; */
+      }
+
+      .nav-menu {
+        width: 50%;
+        /* border: 1px solid blue; */
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        align-items: center;
+        a {
+          text-decoration: none;
+          color: blue;
+          font-weight: bold;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="nav-brand"><h1>Sample Website</h1></div>
+      <div class="nav-menu">
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+        <a href="#">Services</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </body>
+</html>

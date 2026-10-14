@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Properties</title>
+
+    <style>
+      .image1 {
+        width: 300px;
+        height: 200px;
+        max-width: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 15px;
+      }
+
+      .image2 {
+        width: 300px;
+        height: 200px;
+        object-fit: contain;
+        object-position: top;
+        border-radius: 50%;
+        background-color: lightgrey;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Object Fit: Cover</h2>
+    <img class="image1" src="nature.jpg" alt="Nature landscape" />
+    <h2>Object Fit: Contain</h2>
+    <img class="image2" src="nature.jpg" alt="Nature landscape" />
+  </body>
+</html>

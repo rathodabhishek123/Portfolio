@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glass Nature | Premium Design</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        min-height: 100vh;
+        color: #ffffff;
+        background:
+          radial-gradient(ellipse at 10% 10%, #512da8 0%, transparent 40%),
+          radial-gradient(ellipse at 90% 30%, #006b9b 0%, transparent 38%),
+          radial-gradient(ellipse at 50% 100%, #35105e 0%, transparent 45%),
+          #080b19;
+        background-attachment: fixed;
+        overflow-x: hidden;
+      }
+
+      /* Decorative background lights */
+      .orb {
+        position: fixed;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.35;
+        pointer-events: none;
+        z-index: -1;
+        animation: float 7s ease-in-out infinite alternate;
+      }
+
+      .orb-one {
+        background: #8b5cf6;
+        top: 15%;
+        left: -100px;
+      }
+
+      .orb-two {
+        background: #06b6d4;
+        right: -100px;
+        bottom: 10%;
+        animation-delay: -3s;
+      }
+
+      /* Glass navigation */
+      nav {
+        position: sticky;
+        top: 15px;
+        z-index: 100;
+        width: 90%;
+        max-width: 1200px;
+        margin: 15px auto 0;
+        padding: 17px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo {
+        font-size: 23px;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+
+      .logo span {
+        color: #67e8f9;
+      }
+
+      nav a {
+        color: #e4e9ff;
+        text-decoration: none;
+        margin-left: 22px;
+        font-size: 13px;
+        transition: color 0.2s;
+      }
+
+      nav a:hover {
+        color: #67e8f9;
+      }
+
+      /* Main layout */
+      .container {
+        max-width: 1100px;
+        width: 88%;
+        margin: 45px auto 70px;
+      }
+
+      /* Hero */
+      .hero {
+        min-height: 370px;
+        padding: 50px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 28px;
+
+        background:
+          linear-gradient(90deg, rgba(9, 13, 38, 0.8), rgba(18, 25, 58, 0.2)),
+          url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=85")
+            center/cover;
+
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        box-shadow: 0 25px 65px rgba(0, 0, 0, 0.25);
+        animation: enter 0.7s ease both;
+      }
+
+      .hero-content {
+        max-width: 580px;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 8px 15px;
+        border-radius: 30px;
+        font-size: 11px;
+        letter-spacing: 2px;
+        color: #a5f3fc;
+        background: rgba(103, 232, 249, 0.12);
+        border: 1px solid rgba(103, 232, 249, 0.35);
+        backdrop-filter: blur(10px);
+      }
+
+      .hero h1 {
+        font-size: clamp(36px, 5vw, 62px);
+        line-height: 1.15;
+        margin: 22px 0;
+        font-weight: 800;
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #67e8f9, #c4b5fd, #f0abfc);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero p {
+        font-size: 14px;
+        line-height: 1.9;
+        color: #e0e7ff;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 25px;
+        padding: 13px 24px;
+        color: #10132b;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 700;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #67e8f9, #c4b5fd);
+        box-shadow: 0 5px 25px rgba(103, 232, 249, 0.2);
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s;
+      }
+
+      .btn:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 35px rgba(103, 232, 249, 0.4);
+      }
+
+      /* Section headings */
+      .section-title {
+        text-align: center;
+        margin: 65px 0 30px;
+      }
+
+      .section-title span {
+        color: #67e8f9;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 4px;
+      }
+
+      .section-title h2 {
+        font-size: clamp(27px, 4vw, 39px);
+        margin-top: 10px;
+      }
+
+      .section-title p {
+        color: #b8c4e4;
+        font-size: 13px;
+        margin-top: 12px;
+      }
+
+      /* Glass article cards */
+      .article {
+        position: relative;
+        margin-bottom: 32px;
+        overflow: hidden;
+        border-radius: 24px;
+
+        background: rgba(255, 255, 255, 0.075);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        border: 1px solid rgba(255, 255, 255, 0.17);
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
+
+        transition:
+          transform 0.3s,
+          border-color 0.3s,
+          box-shadow 0.3s;
+        animation: enter 0.7s ease both;
+      }
+
+      .article:hover {
+        transform: translateY(-6px);
+        border-color: rgba(103, 232, 249, 0.65);
+        box-shadow: 0 20px 55px rgba(34, 211, 238, 0.12);
+      }
+
+      .article-image {
+        height: 310px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .article-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s ease;
+      }
+
+      .article:hover .article-image img {
+        transform: scale(1.05);
+      }
+
+      .article-image::after {
+        content: "";
+        position: absolute;
+        inset: 45% 0 0;
+        background: linear-gradient(transparent, rgba(12, 16, 39, 0.7));
+        pointer-events: none;
+      }
+
+      .image-label {
+        position: absolute;
+        z-index: 2;
+        bottom: 20px;
+        left: 24px;
+        padding: 8px 15px;
+        border-radius: 30px;
+        font-size: 10px;
+        letter-spacing: 1.5px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(15px);
+      }
+
+      .article-content {
+        padding: 30px;
+      }
+
+      .article-content h2 {
+        font-size: 25px;
+        margin-bottom: 15px;
+      }
+
+      .article-content p {
+        font-size: 13px;
+        line-height: 2;
+        color: #c1cce6;
+        margin-bottom: 15px;
+      }
+
+      .read-more {
+        display: inline-block;
+        margin-top: 5px;
+        color: #67e8f9;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: letter-spacing 0.2s;
+      }
+
+      .read-more:hover {
+        letter-spacing: 1px;
+      }
+
+      /* Small glass cards */
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 25px;
+        margin-bottom: 50px;
+      }
+
+      .mini-card {
+        overflow: hidden;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.075);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.17);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+        transition:
+          transform 0.3s,
+          border-color 0.3s;
+      }
+
+      .mini-card:hover {
+        transform: translateY(-8px);
+        border-color: #c4b5fd;
+      }
+
+      .mini-card img {
+        width: 100%;
+        height: 220px;
+        display: block;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .mini-card:hover img {
+        transform: scale(1.05);
+      }
+
+      .mini-image {
+        overflow: hidden;
+      }
+
+      .mini-content {
+        padding: 24px;
+      }
+
+      .mini-content h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .mini-content p {
+        color: #c1cce6;
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+      /* Footer */
+      footer {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto 20px;
+        padding: 24px;
+        text-align: center;
+        color: #b8c4e4;
+        font-size: 12px;
+
+        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 18px;
+      }
+
+      footer span {
+        color: #67e8f9;
+      }
+
+      /* Animations */
+      @keyframes enter {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        from {
+          transform: translateY(-15px) scale(1);
+        }
+        to {
+          transform: translateY(25px) scale(1.12);
+        }
+      }
+
+      @media (max-width: 650px) {
+        nav {
+          width: 94%;
+          padding: 15px;
+        }
+
+        .logo {
+          font-size: 19px;
+        }
+
+        nav a {
+          margin-left: 10px;
+          font-size: 11px;
+        }
+
+        .container {
+          width: 92%;
+          margin-top: 25px;
+        }
+
+        .hero {
+          padding: 28px;
+          min-height: 400px;
+        }
+
+        .article-image {
+          height: 225px;
+        }
+
+        .article-content {
+          padding: 22px;
+        }
+
+        .article-content h2 {
+          font-size: 22px;
+        }
+
+        .mini-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+
+    <nav>
+      <div class="logo">GLASS<span>WORLD.</span></div>
+
+      <div>
+        <a href="#home">Home</a>
+        <a href="#stories">Stories</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <header class="hero" id="home">
+        <div class="hero-content">
+          <span class="tag">✦ DISCOVER SOMETHING BEAUTIFUL</span>
+
+          <h1>
+            Nature Is<br />
+            <span class="gradient-text">Pure Magic.</span>
+          </h1>
+
+          <p>
+            Explore breathtaking landscapes, discover peaceful destinations, and
+            experience the beauty of our world through a fresh perspective.
+          </p>
+
+          <a href="#stories" class="btn">Explore Stories ↗</a>
+        </div>
+      </header>
+
+      <section id="stories">
+        <div class="section-title">
+          <span>OUR COLLECTION</span>
+          <h2>Stories Behind The Beauty</h2>
+          <p>Beautiful places. Amazing experiences. Endless inspiration.</p>
+        </div>
+
+        <article class="article">
+          <div class="article-image">
+            <img
+              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=85"
+              alt="Majestic mountains"
+              loading="lazy"
+            />
+
+            <span class="image-label">01 / MOUNTAIN ESCAPE</span>
+          </div>
+
+          <div class="article-content">
+            <h2>Beyond the Mountains</h2>
+
+            <p>
+              Discover the incredible beauty of towering peaks, misty valleys,
+              and peaceful mountain landscapes. Every journey brings a new
+              adventure and a fresh perspective on the world around us.
+            </p>
+
+            <p>
+              Take a deep breath, enjoy the scenery, and let nature remind you
+              that the best experiences are often found beyond the familiar.
+            </p>
+
+            <a href="#gallery" class="read-more">Discover More ↗</a>
+          </div>
+        </article>
+
+        <article class="article">
+          <div class="article-image">
+            <img
+              src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1600&q=85"
+              alt="Sunlight in a beautiful forest"
+              loading="lazy"
+            />
+
+            <span class="image-label">02 / FOREST STORIES</span>
+          </div>
+
+          <div class="article-content">
+            <h2>Into the Green World</h2>
+
+            <p>
+              Sunlight filters through the trees while fresh air and birdsong
+              create a peaceful atmosphere. A forest is more than a collection
+              of trees. It is a living world filled with stories waiting to be
+              discovered.
+            </p>
+
+            <p>
+              Explore the hidden beauty of nature and remember the importance of
+              protecting our planet for generations to come.
+            </p>
+
+            <a href="#gallery" class="read-more">Discover More ↗</a>
+          </div>
+        </article>
+      </section>
+
+      <section id="gallery">
+        <div class="section-title">
+          <span>VISUAL EXPERIENCES</span>
+          <h2>Explore The Gallery</h2>
+          <p>A little inspiration for your next adventure.</p>
+        </div>
+
+        <div class="mini-grid">
+          <article class="mini-card">
+            <div class="mini-image">
+              <img
+                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85"
+                alt="Ocean paradise"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="mini-content">
+              <h3>Ocean Paradise</h3>
+              <p>
+                Crystal-clear water, endless blue horizons, and peaceful golden
+                beaches.
+              </p>
+              <a href="#home" class="read-more">Explore ↗</a>
+            </div>
+          </article>
+
+          <article class="mini-card">
+            <div class="mini-image">
+              <img
+                src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=85"
+                alt="Golden sunrise"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="mini-content">
+              <h3>Golden Sunrise</h3>
+              <p>
+                Soft golden light, colourful skies, and beautiful new
+                beginnings.
+              </p>
+              <a href="#home" class="read-more">Explore ↗</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>© 2026 <span>GLASSWORLD.</span> Designed with HTML & CSS.</footer>
+  </body>
+</html>
